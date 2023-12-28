@@ -9,7 +9,8 @@
         const data = await response.json();
         let htmlString = '<ul>';
         
-        for (let file of data) {
+        for (let i = data.length - 1; i >= 0; i--) {
+          const file = data[i];
           if (file.name !== 'index.html') {
             htmlString += `<li><a href="${file.download_url}">${file.name}</a></li>`;
           }
@@ -19,5 +20,5 @@
         document.getElementsByTagName('body')[0].innerHTML = htmlString;
       })()
     </script>
-  <body>
+  </body>
 </html>
